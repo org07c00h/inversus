@@ -58,13 +58,13 @@ function keyboard(keyCode) {
 function setup() {
 
     makeGrid();
-
+    grid[17][15].changeColor();
     initPlayer();   
 
     state = play;
 }
 
-function play() {
-    player.x += player.vx;
-    player.y += player.vy;
+function play(dt) {
+
+    updatePlayer();
 }
