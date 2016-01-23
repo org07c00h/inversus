@@ -10,8 +10,10 @@ var scene = new PIXI.Container();
 var state = setup;
 
 var render = function() {
+
     renderer.render(scene);
     state();
+
     requestAnimationFrame(render);
 }
 
@@ -67,4 +69,17 @@ function setup() {
 function play(dt) {
 
     updatePlayer();
+
+    updateBullets();
 }
+
+Array.prototype.remove = function() {
+    var what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+        what = a[--L];
+        while ((ax = this.indexOf(what)) !== -1) {
+            this.splice(ax, 1);
+        }
+    }
+    return this;
+};

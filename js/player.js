@@ -5,14 +5,18 @@ function initPlayer () {
     player.position.set(500, 500);
     player.color = white;
     player.beginFill(player.color);
-    player.drawRoundedRect(0, 0, grid_width, grid_height, 5);
+    player.drawRoundedRect(0, 0, player_width, player_height, 5);
     player.endFill();
     
 
-    var left = keyboard(37),
-      up = keyboard(38),
-      right = keyboard(39),
-      down = keyboard(40);
+    var left = keyboard(65),
+      up = keyboard(87),
+      right = keyboard(68),
+      down = keyboard(83),
+      fire_up = keyboard(38),
+      fire_down = keyboard(40),
+      fire_left = keyboard(37),
+      fire_right = keyboard(39);
 //Left arrow key `press` method
     left.press = function() {
         player.vx = -5;
@@ -55,15 +59,30 @@ function initPlayer () {
 
     down.release = function() {
         if (!up.isDown) {
-          player.vy = 0;
-    }
+            player.vy = 0;
+        }
+    };
+
+    fire_right.press = function() {
+        fire({x: 1, y: 0});
+    };
+
+    fire_left.press = function() {
+        fire({x: -1, y: 0});
+    };
+
+    fire_up.press = function() {
+        fire({x: 0, y: -1});
+    };
+
+    fire_down.press = function() {
+        fire({x: 0, y: 1});
     };
 
     scene.addChild(player);
 }
 
 function updatePlayer() {
-    
     if (player.vx != 0) {
         if (player.x + player.vx + player.width >= width) {
             player.x = width - player.width;
@@ -190,4 +209,8 @@ function boundingBox(rectangle1, rectangle2) {
         return true;
     }
     return false;
+}
+
+function fire(diraction) {
+    new Bullet(diraction);
 }
