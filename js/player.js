@@ -135,23 +135,23 @@ function checkPlayerGridCollistionX() {
     player_rectangle.width = player.width;
     player_rectangle.height = player.height;
 
-    if (grid[grid_x][grid_y1].color === player.color) {
-        if (boundingBox(grid[grid_x][grid_y1], player_rectangle)) {
-            if (player.vx > 0) {
-                return grid[grid_x][grid_y1].x - player.width;
-            } else {
-                return grid[grid_x][grid_y1].x + grid[grid_x][grid_y1].width;
-            }
+    if (grid[grid_x][grid_y1] !== undefined && grid[grid_x][grid_y1].color === player.color &&
+        boundingBox(grid[grid_x][grid_y1], player_rectangle)) {
+        
+        if (player.vx > 0) {
+            return grid[grid_x][grid_y1].x - player.width;
+        } else {
+            return grid[grid_x][grid_y1].x + grid[grid_x][grid_y1].width;
         }
     }
 
-    if (grid[grid_x][grid_y2].color === player.color) {
-        if (boundingBox(grid[grid_x][grid_y2], player_rectangle)) {
-            if (player.vx > 0) {
-                return grid[grid_x][grid_y2].x - player.width;
-            } else {
-                return grid[grid_x][grid_y2].x + grid[grid_x][grid_y2].width;
-            }
+    if (grid[grid_x][grid_y2] !== undefined && grid[grid_x][grid_y2].color === player.color &&
+        boundingBox(grid[grid_x][grid_y2], player_rectangle)) {
+     
+        if (player.vx > 0) {
+            return grid[grid_x][grid_y2].x - player.width;
+        } else {
+            return grid[grid_x][grid_y2].x + grid[grid_x][grid_y2].width;
         }
     }
 
@@ -178,23 +178,23 @@ function checkPlayerGridCollistionY() {
     player_rectangle.width = player.width;
     player_rectangle.height = player.height;
 
-    if (grid[grid_x1][grid_y].color === player.color) {
-        if (boundingBox(grid[grid_x1][grid_y], player_rectangle)) {
-            if (player.vy > 0) {
-                return grid[grid_x1][grid_y].y - player.height;
-            } else {
-                return grid[grid_x1][grid_y].y + grid[grid_x1][grid_y].height;
-            }
+    if (grid[grid_x1][grid_y] !== undefined && grid[grid_x1][grid_y].color === player.color && 
+        boundingBox(grid[grid_x1][grid_y], player_rectangle)) {
+        
+        if (player.vy > 0) {
+            return grid[grid_x1][grid_y].y - player.height;
+        } else {
+            return grid[grid_x1][grid_y].y + grid[grid_x1][grid_y].height;
         }
     }
 
-    if (grid[grid_x2][grid_y].color === player.color) {
-        if (boundingBox(grid[grid_x2][grid_y], player_rectangle)) {
-            if (player.vy > 0) {
-                return grid[grid_x2][grid_y].y - player.height;
-            } else {
-                return grid[grid_x2][grid_y].y + grid[grid_x2][grid_y].height;
-            }
+    if (grid[grid_x2][grid_y] !== undefined && grid[grid_x2][grid_y].color === player.color && 
+        boundingBox(grid[grid_x2][grid_y], player_rectangle)) {
+         
+        if (player.vy > 0) {
+            return grid[grid_x2][grid_y].y - player.height;
+        } else {
+            return grid[grid_x2][grid_y].y + grid[grid_x2][grid_y].height;
         }
     }
 
